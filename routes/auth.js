@@ -36,11 +36,10 @@ app.post('/signup', async function (req, res) {
     let [err, result] = await to(db.executeQuery(`select * from students`));
     studentId = result.length+1;
    
-    [err, result] = await to(db.executeQuery(`select  * from students where username = ${username}`));
-    if(result[0]){
-        res.json({
-        message: `Student with username: ${username} already exists`
-        });
+    [err, result] = await to(db.executeQuery(`select  * from students where username = "${username}"`));
+    student = result[0];
+    if(student){
+        return res.status(400).send({ data: null, error: `This username already exist` });
     }
     
     let encryptedPassword = await  passwordHash(password);
@@ -67,10 +66,10 @@ app.post('/login', async function (req, res) {
         return res.json({"error": "Password is required "})
     }
 
-    let [err, result] = await to(db.executeQuery(`select  * from students`));
-    student = result[0]
-    if(student.email != email){
-        res.json({
+    let [err, result] = await to(db.executeQuery(`select  * from students where email='${email}'`));
+    let student = result[0];
+    if(student == null){
+        return res.json({
         "error": "Incorrect email"
         });
     }
