@@ -3,18 +3,12 @@ let mysql = require('mysql');
 let connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'Pawni@123',
-    database : 'CRUD'
+    password : '#####',
+    database : '####'
   });
 
 const connect = () =>{
     return new Promise((resolve, reject) =>{
-        // connection = mysql.createConnection({
-        //     host     : 'localhost',
-        //     user     : 'root',
-        //     password : 'Pawni@123',
-        //     database : 'crud'
-        //   });
         connection.connect((err, res) =>{
             if (err){
                 return reject(new Error('Error connecting to DB'));
