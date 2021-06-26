@@ -1,7 +1,7 @@
 {
-  "name": "CRUD_app",
+  "name": "crud_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "node api hosted on heroku",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,10 +12,19 @@
   "dependencies": {
     "await-to-js": "^2.1.1",
     "bcrypt": "^5.0.0",
+    "dotenv": "^10.0.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "sql": "^0.78.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawnikhanna/crud_jwt-sql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pawnikhanna/crud_jwt-sql/issues"
+  },
+  "homepage": "https://github.com/pawnikhanna/crud_jwt-sql#readme"
 }

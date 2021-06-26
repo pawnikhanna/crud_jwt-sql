@@ -8,6 +8,6 @@ app.use("/auth",require("./routes/auth"));
 app.use("/courses", require("./routes/courses"));
 app.use("/students", require("./routes/students"));
 
-app.listen(3001, () =>
+app.listen(process.env.PORT, () =>
     console.log("Server started")
 )

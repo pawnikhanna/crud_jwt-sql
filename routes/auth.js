@@ -6,8 +6,9 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 var validator = require("email-validator");
 const db = require('./../data/db');
+require('dotenv').config();
 
-let salt = 'mysalt';
+let salt = process.env.salt;
 const generateToken = (password, salt) => {
 
     let token = jwt.sign(password, salt);
@@ -44,7 +45,7 @@ app.post('/signup', async function (req, res) {
     
     let encryptedPassword = await  passwordHash(password);
     [err, result] = await to(
-        db.executeQuery(`insert into students values( ${studentId}, "${email}", "${name}", "${username}", "${encryptedPassword}" )`)
+        db.executeQuery(`insert into students values( ${studentId}, "${name}", "${username}", "${email}", "${encryptedPassword}" )`)
     );
     if(!err){
         res.json({

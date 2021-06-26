@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-let salt = 'mysalt';
+let salt = process.env.salt;
 
 const auth = async (req, res, next) => {
     let token = req.headers.authorization;

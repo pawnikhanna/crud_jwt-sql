@@ -72,12 +72,11 @@ app.post("/:id/enroll", auth, async(req, res) => {
         message: `No course with id:${courseId}`
       });
     } 
-
     slots = result[0].slots;
 
     [err, result] = await to(db.executeQuery(`select  * from students where id = ${studentId}`));
     student = result[0];
-    if(student == null){
+    if(result[0] == null){
       res.json({
         message: `No student with id:${studentId}`
       });
